@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/lszyszka/login-form.git/precache-manifest.87edf655b6c1a5a29a4a878f91a8058d.js"
+  "/login-form/precache-manifest.05af735c4a55e2b89e33c3c452e14781.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/lszyszka/login-form.git/index.html", {
+workbox.routing.registerNavigationRoute("/login-form/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

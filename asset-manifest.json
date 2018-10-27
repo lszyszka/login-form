@@ -1,15 +1,15 @@
 {
-  "main.css": "/lszyszka/login-form.git/static/css/main.267afeb9.chunk.css",
-  "main.js": "/lszyszka/login-form.git/static/js/main.5de4790c.chunk.js",
-  "main.js.map": "/lszyszka/login-form.git/static/js/main.5de4790c.chunk.js.map",
-  "static/css/1.b31323a1.chunk.css": "/lszyszka/login-form.git/static/css/1.b31323a1.chunk.css",
-  "static/js/1.f0f54817.chunk.js": "/lszyszka/login-form.git/static/js/1.f0f54817.chunk.js",
-  "static/js/1.f0f54817.chunk.js.map": "/lszyszka/login-form.git/static/js/1.f0f54817.chunk.js.map",
-  "runtime~main.js": "/lszyszka/login-form.git/static/js/runtime~main.91889155.js",
-  "runtime~main.js.map": "/lszyszka/login-form.git/static/js/runtime~main.91889155.js.map",
-  "static/css/1.b31323a1.chunk.css.map": "/lszyszka/login-form.git/static/css/1.b31323a1.chunk.css.map",
-  "static/css/main.267afeb9.chunk.css.map": "/lszyszka/login-form.git/static/css/main.267afeb9.chunk.css.map",
-  "index.html": "/lszyszka/login-form.git/index.html",
-  "precache-manifest.87edf655b6c1a5a29a4a878f91a8058d.js": "/lszyszka/login-form.git/precache-manifest.87edf655b6c1a5a29a4a878f91a8058d.js",
-  "service-worker.js": "/lszyszka/login-form.git/service-worker.js"
+  "main.css": "/login-form/static/css/main.267afeb9.chunk.css",
+  "main.js": "/login-form/static/js/main.63d6b9a8.chunk.js",
+  "main.js.map": "/login-form/static/js/main.63d6b9a8.chunk.js.map",
+  "static/css/1.b31323a1.chunk.css": "/login-form/static/css/1.b31323a1.chunk.css",
+  "static/js/1.f0f54817.chunk.js": "/login-form/static/js/1.f0f54817.chunk.js",
+  "static/js/1.f0f54817.chunk.js.map": "/login-form/static/js/1.f0f54817.chunk.js.map",
+  "runtime~main.js": "/login-form/static/js/runtime~main.7c1bdf89.js",
+  "runtime~main.js.map": "/login-form/static/js/runtime~main.7c1bdf89.js.map",
+  "static/css/1.b31323a1.chunk.css.map": "/login-form/static/css/1.b31323a1.chunk.css.map",
+  "static/css/main.267afeb9.chunk.css.map": "/login-form/static/css/main.267afeb9.chunk.css.map",
+  "index.html": "/login-form/index.html",
+  "precache-manifest.05af735c4a55e2b89e33c3c452e14781.js": "/login-form/precache-manifest.05af735c4a55e2b89e33c3c452e14781.js",
+  "service-worker.js": "/login-form/service-worker.js"
 }
