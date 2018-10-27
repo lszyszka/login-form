@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/lszyszka/login-form.git/static/css/1.b31323a1.chunk.css"
   },
   {
-    "revision": "b286ddda77bdfc828234e4ef02d36331",
+    "revision": "0368397cf97aa0a7b407959afb3bf8a9",
     "url": "/lszyszka/login-form.git/index.html"
   }
 ];
