@@ -1,28 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {Provider} from 'react-redux';
 import './App.css';
+import store from './Store/index';
+import Login from "./Components/login";
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import Register from "./Components/register";
+import Logged from "./Components/logged";
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <Provider store={store}>
+                <Router>
+                    <div className="App">
+                        <Route exact path="/" component={Login}/>
+                        <Route path="/register" component={Register}/>
+                        <Route path="/logged" component={Logged}/>
+                    </div>
+                </Router>
+            </Provider>
+        );
+    }
 }
 
 export default App;
