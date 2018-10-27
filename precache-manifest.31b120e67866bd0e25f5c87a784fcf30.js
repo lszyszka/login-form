@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/login-form/static/js/runtime~main.7c1bdf89.js"
   },
   {
-    "revision": "63d6b9a89df3655b750c",
-    "url": "/login-form/static/js/main.63d6b9a8.chunk.js"
+    "revision": "4329ff9bdc7047d11a0e",
+    "url": "/login-form/static/js/main.4329ff9b.chunk.js"
   },
   {
     "revision": "f0f5481770c73a2bebdc",
     "url": "/login-form/static/js/1.f0f54817.chunk.js"
   },
   {
-    "revision": "63d6b9a89df3655b750c",
+    "revision": "4329ff9bdc7047d11a0e",
     "url": "/login-form/static/css/main.267afeb9.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/login-form/static/css/1.b31323a1.chunk.css"
   },
   {
-    "revision": "6ac6875768d723d27c4d42db08419531",
+    "revision": "1673020823868ead2bb529a3e315b30f",
     "url": "/login-form/index.html"
   }
 ];
