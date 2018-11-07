@@ -5,7 +5,7 @@ import {mapDispatchToProps} from "../mapDispatchToProps";
 import connect from "react-redux/es/connect/connect";
 import Register from "./register";
 import Link from "react-router-dom/es/Link";
-import Redirect from "react-router-dom/es/Redirect";
+import {Button, Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react';
 
 class Login extends React.Component {
     constructor(props) {
@@ -15,46 +15,67 @@ class Login extends React.Component {
                 userName: '',
                 password: ''
             },
-            isLogin: undefined
+            error: []
         }
     }
 
+    validate(e) {
+        if (!/([A-Za-z0-9])$/.test(e.target.value)) {
+            console.log("Tylko cyfry i litery");
+            this.state.error.push("ZLY")
+            return null;
+        }
+    }
+
+
     handleInput(e) {
+
         this.setState({userLogin: {...this.state.userLogin, [e.target.name]: e.target.value}})
     }
 
-    login() {
-        if (this.state.userLogin.userName === localStorage.getItem('userName') &&
-            this.state.userLogin.password === localStorage.getItem('password')) {
-            console.log("Udalo sie zalogowac");
-            this.setState({isLogin: true})
-        }
-        else {
-            this.setState({isLogin: false})
-            console.log("Niepoprawne dane");
-        }
-    }
-
     render() {
-        if (this.state.isLogin === undefined) {
+        console.log(this.props);
+        if (this.props.isLogin === undefined) {
             return <div>
-                <label>User Name:</label><input type="text" name="userName" onChange={(e) => {
-                this.handleInput(e)
-            }}/>
-                <label>Password: </label><input type="password" name="password" onChange={(e) => {
-                this.handleInput(e)
-            }}/>
-                <button onClick={() => {
-                    this.login()
-                }}>Login
-                </button>
-                <button>
-                    <Link to="/register">Register</Link>
-                </button>
+                <Grid textAlign='center' style={{height: '100%'}} verticalAlign='middle'>
+                    <Grid.Column style={{maxWidth: 450, marginTop: "20px"}}>
+                        <Header as='h2' color='teal' textAlign='center'>
+                            Log-in
+                        </Header>
+                        <Form size='large'>
+                            <Segment stacked>
+                                <Form.Input fluid icon='user' name='userName' iconPosition='left' placeholder='Login'
+                                            onChange={(e) => {
+                                                this.handleInput(e)
+                                            }} onFocus={(e) => this.validate(e)}/>
+                                <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password'
+                                            name='password' onChange={(e) => {
+                                    this.handleInput(e)
+                                }}/>
+
+                                <Button color='teal' fluid size='large' onClick={() => {
+                                    this.props.loginUser(this.state.userLogin)
+                                }}>
+                                    Login
+                                </Button>
+                            </Segment>
+                        </Form>
+                        <Message>
+                            New to us?<Link to="/register">Register</Link>
+                        </Message>
+                    </Grid.Column>
+                </Grid>
+
+
             </div>
         }
-        if (this.state.isLogin) {
-            return <Redirect to="/logged"/>
+        if (this.props.isLogin) {
+            return <div><img src="https://media.giphy.com/media/HXF45CT8cvzZC/giphy.gif"/>
+                <Header as='h2' color='teal' textAlign='center'>
+                    Login Successful ! <br/>
+                    Welcome {localStorage.getItem('firstName')} :)
+                </Header>
+            </div>
         } else {
             return <div>
                 Niepoprawne dane logowanie

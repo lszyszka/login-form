@@ -8,6 +8,8 @@ import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Redirect from "react-router-dom/es/Redirect";
 
+import {Button, Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react';
+
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -36,6 +38,10 @@ class Register extends React.Component {
         else {
             this.props.registerUser(this.state.user);
             this.notifySucces();
+            this.timeOutId = setTimeout(() => {
+                this.props.history.push("/");
+            }, 1500)
+
         }
     }
 
@@ -54,25 +60,52 @@ class Register extends React.Component {
                 draggable
                 pauseOnHover
             />
-            <label>First Name: </label><input name="firstName" type="text" onChange={(e) => {
-            this.handleInput(e)
-        }}/>
-            <label>User Name: </label><input name="userName" type="text" onChange={(e) => {
-            this.handleInput(e)
-        }}/>
-            <label>Password: </label><input name="password" type="password" onChange={(e) => {
-            this.handleInput(e)
-        }}/>
-            <label>Confim Password: </label><input name="confirmPassword" type="password" onChange={(e) => {
-            this.handleInput(e)
-        }}/>
-            <button onClick={() => {
-                this.validate();
-            }}>Send
-            </button>
-            <Link to="/">Back to Login</Link>
+            <Grid textAlign='center' style={{height: '100%'}} verticalAlign='middle'>
+                <Grid.Column style={{maxWidth: 450, marginTop: "20px"}}>
+                    <Header as='h2' color='teal' textAlign='center'>
+                        Register account
+                    </Header>
+                    <Form size='large'>
+                        <Segment stacked>
+                            <Form.Input fluid icon='user circle' name='firstName' iconPosition='left'
+                                        placeholder='First Name'
+                                        onChange={(e) => {
+                                            this.handleInput(e)
+                                        }}/>
+                            <Form.Input fluid icon='user circle outline' name='userName' iconPosition='left'
+                                        placeholder='User Name'
+                                        onChange={(e) => {
+                                            this.handleInput(e)
+                                        }}/>
+                            <Form.Input fluid icon='lock' name='password' iconPosition='left' type='Password'
+                                        placeholder='Password'
+                                        onChange={(e) => {
+                                            this.handleInput(e)
+                                        }}/>
+                            <Form.Input fluid icon='lock' name='confirmPassword' type='password' iconPosition='left'
+                                        placeholder='Confirm Password'
+                                        onChange={(e) => {
+                                            this.handleInput(e)
+                                        }}/>
+
+
+                            <Button color='teal' fluid size='large' onClick={() => {
+                                this.validate();
+                            }}>
+                                Register
+                            </Button>
+                        </Segment>
+                    </Form>
+                    <Message>
+                        Already have an account? <Link to="/">Back to Login</Link>
+                    </Message>
+                </Grid.Column>
+            </Grid>
+
+
         </div>
     }
+
 
 }
 
