@@ -1,14 +1,13 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import {mapStateToProps} from "../mapStateToProps";
 import {mapDispatchToProps} from "../mapDispatchToProps";
 import connect from "react-redux/es/connect/connect";
 import Link from "react-router-dom/es/Link";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Redirect from "react-router-dom/es/Redirect";
 
-import {Button, Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react';
+
+import {Button, Form, Grid, Header, Message, Segment} from 'semantic-ui-react';
 
 class Register extends React.Component {
     constructor(props) {
@@ -19,7 +18,14 @@ class Register extends React.Component {
                 userName: '',
                 password: '',
                 confirmPassword: ''
-            }
+            },
+            error: {
+                nameError: "",
+                userError: "",
+                passError: "",
+                confpassError: ""
+            },
+            validate: false
         }
     }
 
@@ -27,12 +33,12 @@ class Register extends React.Component {
         this.setState({user: {...this.state.user, [e.target.name]: e.target.value}});
     }
 
-    notify = () => toast.error("Fill all input !");
+    notify = () => toast.error("Correct fill all input !");
     notifySucces = () => toast.success("Register succesful");
 
     validate() {
         if (this.state.user.firstName === "" || this.state.user.userName === "" || this.state.user.password === "" ||
-            this.state.user.password !== this.state.user.confirmPassword) {
+            this.state.user.password !== this.state.user.confirmPassword || this.state.validate === false) {
             this.notify()
         }
         else {
@@ -51,7 +57,7 @@ class Register extends React.Component {
         return <div>
             <ToastContainer
                 position="bottom-center"
-                autoClose={5000}
+                autoClose={2500}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
@@ -70,23 +76,66 @@ class Register extends React.Component {
                             <Form.Input fluid icon='user circle' name='firstName' iconPosition='left'
                                         placeholder='First Name'
                                         onChange={(e) => {
-                                            this.handleInput(e)
+                                            this.handleInput(e);
+                                            if (!e.target.value.match(/^[A-Za-z]+$/)) {
+                                                this.setState({
+                                                    error: {
+                                                        ...this.state.error,
+                                                        nameError: "Only letters a-z A-Z"
+                                                    }, validate: false
+                                                })
+                                            } else {
+                                                this.setState({
+                                                    error: {...this.state.error, nameError: ""},
+                                                    validate: true
+                                                })
+                                            }
                                         }}/>
+                            <Header as='h5' color='red'>{this.state.error.nameError}</Header>
                             <Form.Input fluid icon='user circle outline' name='userName' iconPosition='left'
                                         placeholder='User Name'
                                         onChange={(e) => {
-                                            this.handleInput(e)
+                                            this.handleInput(e);
+                                            if (!e.target.value.match(/^[A-Za-z0-9]+$/)) {
+                                                this.setState({
+                                                    error: {
+                                                        ...this.state.error,
+                                                        userError: "Only letters and numbers (_/:;.,?>< not allow)"
+                                                    }, validate: false
+                                                })
+                                            } else {
+                                                this.setState({
+                                                    error: {...this.state.error, userError: ""},
+                                                    validate: true
+                                                })
+                                            }
                                         }}/>
+                            <Header as='h5' color='red'>{this.state.error.userError}</Header>
                             <Form.Input fluid icon='lock' name='password' iconPosition='left' type='Password'
                                         placeholder='Password'
                                         onChange={(e) => {
                                             this.handleInput(e)
                                         }}/>
+                            <Header as='h5' color='red'>{this.state.error.passError}</Header>
                             <Form.Input fluid icon='lock' name='confirmPassword' type='password' iconPosition='left'
-                                        placeholder='Confirm Password'
+                                        placeholder='Confirm Password' onBlur={(e) => {
+                                if (e.target.value !== this.state.user.password) {
+                                    console.log(e.target.value + "  " + this.state.user.password);
+                                    this.setState({
+                                        error: {
+                                            ...this.state.error,
+                                            confpassError: "Passwords aren't the same"
+                                        }, validate: false
+                                    })
+                                } else {
+                                    this.setState({error: {...this.state.error, confpassError: ""}, validate: true});
+                                }
+                            }
+                            }
                                         onChange={(e) => {
                                             this.handleInput(e)
                                         }}/>
+                            <Header as='h5' color='red'>{this.state.error.confpassError}</Header>
 
 
                             <Button color='teal' fluid size='large' onClick={() => {
@@ -97,7 +146,7 @@ class Register extends React.Component {
                         </Segment>
                     </Form>
                     <Message>
-                        Already have an account? <Link to="/">Back to Login</Link>
+                        Already have an account? <Link style={{fontSize: "1.5rem"}} to="/">Back to Login</Link>
                     </Message>
                 </Grid.Column>
             </Grid>

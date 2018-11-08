@@ -3,7 +3,7 @@ import {Provider} from 'react-redux';
 import './App.css';
 import store from './Store/index';
 import Login from "./Components/login";
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Register from "./Components/register";
 
 

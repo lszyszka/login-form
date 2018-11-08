@@ -1,4 +1,4 @@
-let initalState = {
+let initialState = {
     user: {
         firstName: "",
         userName: "",
@@ -9,7 +9,7 @@ let initalState = {
 };
 
 
-const reducer = (state = initalState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'REGISTER' : {
             localStorage.setItem("userName", action.payload.userName);
